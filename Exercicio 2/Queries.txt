@@ -8,9 +8,9 @@ SELECT *
 -------------------------------------------------------------------------------------------------------
 Query 2
 	
-SELECT remessa.id, sistuation_remessa, total_infracao, 
+SELECT remessa.id, situation_remessa, total_infracao, 
 (SELECT count(*) FROM infracoes WHERE remessa.id = infracoes.id_remessa and is_valid='1') AS valido,
 (SELECT count(*) FROM infracoes WHERE remessa.id = infracoes.id_remessa and is_valid='0') AS invalido
 	FROM remessa
-	NATURAL LEFT JOIN infracoes --on remessa.id = infracoes.id_remessa
-	ORDER BY sistuation_remessa;
+	NATURAL JOIN infracoes
+	ORDER BY situation_remessa;
